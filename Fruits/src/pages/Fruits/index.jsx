@@ -17,7 +17,7 @@ const Fruits = () => {
 },[])
   return (
     <div>Show all fruits:
-      {fruits.map((fruit) => <div key={JSON.stringify(fruit)}>{fruit.name}{fruit.age}</div>)}
+      {fruits.map((fruit) => <div key={JSON.stringify(fruit)}>{fruit.name}{fruit.color}<br/>{fruit.age}</div>)}
     
        </div>
   )
