@@ -1,24 +1,21 @@
 const mongoose = require('mongoose');
 
 // create schema (breakdown of what our data should look like)
-const fruitSchema = new mongoose.Schema(
+const veggiesSchema = new mongoose.Schema(
     {
         name: String,
         color: String,
         age: Number,
-        readyToEat: Boolean,
-        
+        isHealthy: Boolean,
     },
     {
         timestamps: true
     }
-    )
+);
 
 // create Model with that schema
 // whatever we put as the collection name will be lowercased and pluralized +s
-// Fruit > fruits
-// User > users
-const Fruit = mongoose.model("Fruit",         fruitSchema);
-//                          1. ^ which collection   2. ^ the schema
+// Veggies > veggies
+const Veggies = mongoose.model("Veggies", veggiesSchema);
 
-module.exports = Fruit;
+module.exports = Veggies;

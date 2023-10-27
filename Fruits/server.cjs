@@ -1,3 +1,5 @@
+
+
 /* eslint-disable no-undef */
 const express = require('express')
 const path = require('path')
@@ -6,7 +8,12 @@ const morgan = require('morgan')
 const PORT = 3000;
 const app = express();
 
+
 const Fruit = require('./models/Fruit.cjs')
+const Veggies= require("./models/Veggies.cjs")
+
+
+
 
 
 // allows us to use process.env (get variables from .env file)
@@ -52,6 +59,21 @@ app.post("/fruits", async (req,res) => {
     res.send("Route is good")
 
 })
+
+app.get("/veggies", async (req, res) => {
+    console.log("route hit!")
+    let veggiesFromDB = await Veggies.find();
+    console.log(veggiesFromDB)
+    res.send(veggiesFromDB);
+})
+
+
+app.post("/veggies", async (req, res) => {
+    // make Veggie model
+       let dbResponse =  await Veggies.create(req.body);
+       // the created object
+       res.status(201).send(dbResponse)
+    })
 
 
 app.listen(PORT, () => {
